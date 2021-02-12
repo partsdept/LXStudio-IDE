@@ -4,6 +4,8 @@ import heronarts.lx.LX;
 import heronarts.lx.color.LXColor;
 import heronarts.lx.studio.LXStudio;
 import heronarts.p3lx.ui.component.*;
+import lumigeek.lametro.lx.VisibilityParameterHelper;
+
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,7 +14,7 @@ public class UIDxfList extends UICollapsibleSection {
 
     List<UIDxf> uidxfs = new ArrayList<UIDxf>();
 
-    public UIDxfList(LXStudio lx, LXStudio.UI ui, float w, List<File> dxfs) {
+    public UIDxfList(LXStudio lx, LXStudio.UI ui, float w, List<File> dxfs, VisibilityParameterHelper vh) {
         super(ui, 0, 0, w, 32);
         setTitle("DXF LED STRIPS");
         if (dxfs != null) {
@@ -75,6 +77,8 @@ public class UIDxfList extends UICollapsibleSection {
                         .setInactiveColor(ui.theme.getAttentionColor())
                         .addToContainer(this);
 
+
+                vh.attachParameterForFilename(f.getName(),d.visible);
 
             }
             setContentHeight(18 * dxfs.size());

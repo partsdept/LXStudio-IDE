@@ -1,6 +1,6 @@
 {
   "version": "0.2.2-SNAPSHOT",
-  "timestamp": 1613113427803,
+  "timestamp": 1613168723847,
   "model": {
     "id": 2,
     "class": "heronarts.lx.structure.LXStructure",
@@ -30,7 +30,7 @@
     },
     "fixtures": [
       {
-        "id": 31,
+        "id": 78,
         "class": "heronarts.lx.structure.StripFixture",
         "internal": {
           "modulationColor": 0
@@ -713,8 +713,7 @@
         },
         "children": {}
       }
-    ],
-    "file": "across1.dxf.lxm"
+    ]
   },
   "engine": {
     "id": 1,
@@ -1196,6 +1195,14 @@
           "transmitActive": false
         },
         "children": {}
+      },
+      "visibilityHelper": {
+        "overpass.obj": false,
+        "billboard.obj": false,
+        "along1.dxf": false,
+        "downtown.obj": false,
+        "across1.dxf": false,
+        "ladot.obj": false
       }
     }
   },

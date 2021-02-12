@@ -32,7 +32,7 @@
       <sourceFolder url="file://$MODULE_DIR$/src/main/java" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/src/test/java" isTestSource="false" />
     </content>
-    <orderEntry type="jdk" jdkName="JavaSE-1.8" jdkType="JavaSDK" />
+    <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="core.jar">
@@ -197,29 +197,21 @@
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="lx-0.2.1-jar-with-dependencies.jar">
+      <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/lx-0.2.1-jar-with-dependencies.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/p3lx-0.2.2-SNAPSHOT-jar-with-dependencies.jar!/" />
         </CLASSES>
-        <JAVADOC>
-          <root url="jar://$MODULE_DIR$/lib/lx-0.2.1-javadoc.jar!/" />
-        </JAVADOC>
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/lib/lx-0.2.1-sources.jar!/" />
-        </SOURCES>
+        <JAVADOC />
+        <SOURCES />
       </library>
     </orderEntry>
     <orderEntry type="module-library">
-      <library name="p3lx-0.2.1.jar">
+      <library>
         <CLASSES>
-          <root url="jar://$MODULE_DIR$/lib/p3lx-0.2.1.jar!/" />
+          <root url="jar://$MODULE_DIR$/lib/kabeja-0.4.jar!/" />
         </CLASSES>
-        <JAVADOC>
-          <root url="jar://$MODULE_DIR$/lib/p3lx-0.2.1-javadoc.jar!/" />
-        </JAVADOC>
-        <SOURCES>
-          <root url="jar://$MODULE_DIR$/lib/p3lx-0.2.1-sources.jar!/" />
-        </SOURCES>
+        <JAVADOC />
+        <SOURCES />
       </library>
     </orderEntry>
   </component>

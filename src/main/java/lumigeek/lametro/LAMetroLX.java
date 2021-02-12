@@ -23,11 +23,14 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+
+import com.sun.media.jfxmedia.events.VideoRendererListener;
 import heronarts.lx.LX;
 import heronarts.lx.LXPlugin;
 import heronarts.lx.model.LXPoint;
 import heronarts.lx.structure.LXFixture;
 import heronarts.lx.studio.LXStudio;
+import lumigeek.lametro.lx.VisibilityParameterHelper;
 import processing.core.PApplet;
 import lumigeek.lametro.p3lx.*;
 
@@ -45,6 +48,9 @@ public class LAMetroLX extends PApplet implements LXPlugin {
     private static int WIDTH = 1280;
     private static int HEIGHT = 800;
     private static boolean FULLSCREEN = false;
+
+
+    VisibilityParameterHelper visibilityHelper = null;
 
     private List<File> objFiles = null;
     private List<File> dxfFiles = null;
@@ -95,11 +101,20 @@ public class LAMetroLX extends PApplet implements LXPlugin {
               objFiles = getFilesWithExtension(dataDirectory, ".obj");
               dxfFiles = getFilesWithExtension(dataDirectory, ".dxf");
           }
+
+
+
 //      }
 
-      // Register custom pattern and effect types
-      lx.registry.addPattern(heronarts.lx.app.pattern.AppPattern.class);
-      lx.registry.addEffect(heronarts.lx.app.effect.AppEffect.class);
+        visibilityHelper = new VisibilityParameterHelper();
+        visibilityHelper.addFoundFiles(objFiles);
+        visibilityHelper.addFoundFiles(dxfFiles);
+
+        lx.engine.registerComponent("visibilityHelper",visibilityHelper);
+
+        // Register custom pattern and effect types
+        lx.registry.addPattern(heronarts.lx.app.pattern.AppPattern.class);
+        lx.registry.addEffect(heronarts.lx.app.effect.AppEffect.class);
 
     }
 
@@ -110,10 +125,10 @@ public class LAMetroLX extends PApplet implements LXPlugin {
     }
 
     public void onUIReady(LXStudio lx, LXStudio.UI ui) {
-      UIPropList pl = new UIPropList(lx,ui,ui.leftPane.model.getWidth(),objFiles);
+      UIPropList pl = new UIPropList(lx,ui,ui.leftPane.model.getWidth(),objFiles,visibilityHelper);
       pl.addToContainer(ui.leftPane.model);
 
-      UIDxfList dl = new UIDxfList(lx,ui,ui.leftPane.model.getWidth(),dxfFiles);
+      UIDxfList dl = new UIDxfList(lx,ui,ui.leftPane.model.getWidth(),dxfFiles,visibilityHelper);
       dl.addToContainer(ui.leftPane.model);
 
       ui.preview.setBackgroundColor(lx.applet.color(50));
