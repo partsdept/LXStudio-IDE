@@ -1,6 +1,6 @@
 {
-  "version": "0.2.0",
-  "timestamp": 1590706826604,
+  "version": "0.2.2-SNAPSHOT",
+  "timestamp": 1613952284038,
   "model": {
     "id": 2,
     "class": "heronarts.lx.structure.LXStructure",
@@ -21,234 +21,207 @@
       "parameters": {
         "label": "Output",
         "enabled": true,
+        "brightness": 1.0,
         "fps": 0.0,
         "gamma": 1.0,
-        "brightness": 1.0
+        "gammaMode": 1
       },
       "children": {}
     },
     "fixtures": [
       {
-        "id": 80,
-        "class": "heronarts.lx.structure.StripFixture",
+        "jsonFixtureType": "A",
+        "jsonParameters": {},
+        "id": 123,
+        "class": "heronarts.lx.structure.JsonFixture",
         "internal": {
           "modulationColor": 0
         },
         "parameters": {
-          "label": "Strip 1",
+          "label": "Custom A",
           "x": 0.0,
           "y": 0.0,
           "z": 0.0,
           "yaw": 0.0,
           "pitch": 0.0,
           "roll": 0.0,
-          "selected": false,
+          "selected": true,
+          "deactivate": false,
           "enabled": false,
           "brightness": 1.0,
           "identify": false,
           "mute": false,
           "solo": false,
-          "protocol": 0,
-          "reverse": false,
-          "host": "127.0.0.1",
-          "artNetUniverse": 0,
-          "opcChannel": 0,
-          "ddpDataOffset": 0,
-          "kinetPort": 1,
-          "numPoints": 30,
-          "spacing": 10.0
+          "fixtureType": "A.dxf",
+          "scale": 1.0
         },
         "children": {}
       },
       {
-        "id": 84,
-        "class": "heronarts.lx.structure.StripFixture",
+        "jsonFixtureType": "B",
+        "jsonParameters": {},
+        "id": 123,
+        "class": "heronarts.lx.structure.JsonFixture",
         "internal": {
           "modulationColor": 0
         },
         "parameters": {
-          "label": "Strip 2",
+          "label": "Custom B",
           "x": 0.0,
-          "y": 10.0,
+          "y": 0.0,
           "z": 0.0,
-          "yaw": -15.0,
-          "pitch": 0.0,
-          "roll": 0.0,
-          "selected": false,
-          "enabled": false,
-          "brightness": 1.0,
-          "identify": false,
-          "mute": false,
-          "solo": false,
-          "protocol": 0,
-          "reverse": false,
-          "host": "127.0.0.1",
-          "artNetUniverse": 0,
-          "opcChannel": 0,
-          "ddpDataOffset": 0,
-          "kinetPort": 1,
-          "numPoints": 30,
-          "spacing": 10.0
-        },
-        "children": {}
-      },
-      {
-        "id": 83,
-        "class": "heronarts.lx.structure.StripFixture",
-        "internal": {
-          "modulationColor": 0
-        },
-        "parameters": {
-          "label": "Strip 3",
-          "x": 0.0,
-          "y": 20.0,
-          "z": 0.0,
-          "yaw": -30.0,
-          "pitch": 0.0,
-          "roll": 0.0,
-          "selected": false,
-          "enabled": false,
-          "brightness": 1.0,
-          "identify": false,
-          "mute": false,
-          "solo": false,
-          "protocol": 0,
-          "reverse": false,
-          "host": "127.0.0.1",
-          "artNetUniverse": 0,
-          "opcChannel": 0,
-          "ddpDataOffset": 0,
-          "kinetPort": 1,
-          "numPoints": 30,
-          "spacing": 10.0
-        },
-        "children": {}
-      },
-      {
-        "id": 82,
-        "class": "heronarts.lx.structure.StripFixture",
-        "internal": {
-          "modulationColor": 0
-        },
-        "parameters": {
-          "label": "Strip 4",
-          "x": 0.0,
-          "y": 30.0,
-          "z": 0.0,
-          "yaw": -45.0,
-          "pitch": 0.0,
-          "roll": 0.0,
-          "selected": false,
-          "enabled": false,
-          "brightness": 1.0,
-          "identify": false,
-          "mute": false,
-          "solo": false,
-          "protocol": 0,
-          "reverse": false,
-          "host": "127.0.0.1",
-          "artNetUniverse": 0,
-          "opcChannel": 0,
-          "ddpDataOffset": 0,
-          "kinetPort": 1,
-          "numPoints": 30,
-          "spacing": 10.0
-        },
-        "children": {}
-      },
-      {
-        "id": 81,
-        "class": "heronarts.lx.structure.StripFixture",
-        "internal": {
-          "modulationColor": 0
-        },
-        "parameters": {
-          "label": "Strip 5",
-          "x": 0.0,
-          "y": 40.0,
-          "z": 0.0,
-          "yaw": -60.0,
-          "pitch": 0.0,
-          "roll": 0.0,
-          "selected": false,
-          "enabled": false,
-          "brightness": 1.0,
-          "identify": false,
-          "mute": false,
-          "solo": false,
-          "protocol": 0,
-          "reverse": false,
-          "host": "127.0.0.1",
-          "artNetUniverse": 0,
-          "opcChannel": 0,
-          "ddpDataOffset": 0,
-          "kinetPort": 1,
-          "numPoints": 30,
-          "spacing": 10.0
-        },
-        "children": {}
-      },
-      {
-        "id": 88,
-        "class": "heronarts.lx.structure.StripFixture",
-        "internal": {
-          "modulationColor": 0
-        },
-        "parameters": {
-          "label": "Strip 6",
-          "x": 0.0,
-          "y": 50.0,
-          "z": 0.0,
-          "yaw": -76.0,
-          "pitch": 0.0,
-          "roll": 0.0,
-          "selected": false,
-          "enabled": false,
-          "brightness": 1.0,
-          "identify": false,
-          "mute": false,
-          "solo": false,
-          "protocol": 0,
-          "reverse": false,
-          "host": "127.0.0.1",
-          "artNetUniverse": 0,
-          "opcChannel": 0,
-          "ddpDataOffset": 0,
-          "kinetPort": 1,
-          "numPoints": 30,
-          "spacing": 10.0
-        },
-        "children": {}
-      },
-      {
-        "id": 89,
-        "class": "heronarts.lx.structure.StripFixture",
-        "internal": {
-          "modulationColor": 0
-        },
-        "parameters": {
-          "label": "Strip 7",
-          "x": 0.0,
-          "y": 60.0,
-          "z": 0.0,
-          "yaw": -90.0,
+          "yaw": 0.0,
           "pitch": 0.0,
           "roll": 0.0,
           "selected": true,
+          "deactivate": false,
           "enabled": false,
           "brightness": 1.0,
           "identify": false,
           "mute": false,
           "solo": false,
-          "protocol": 0,
-          "reverse": false,
-          "host": "127.0.0.1",
-          "artNetUniverse": 0,
-          "opcChannel": 0,
-          "ddpDataOffset": 0,
-          "kinetPort": 1,
-          "numPoints": 30,
-          "spacing": 10.0
+          "fixtureType": "B.dxf",
+          "scale": 1.0
+        },
+        "children": {}
+      },
+      {
+        "jsonFixtureType": "C",
+        "jsonParameters": {},
+        "id": 123,
+        "class": "heronarts.lx.structure.JsonFixture",
+        "internal": {
+          "modulationColor": 0
+        },
+        "parameters": {
+          "label": "Custom C",
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "yaw": 0.0,
+          "pitch": 0.0,
+          "roll": 0.0,
+          "selected": true,
+          "deactivate": false,
+          "enabled": false,
+          "brightness": 1.0,
+          "identify": false,
+          "mute": false,
+          "solo": false,
+          "fixtureType": "C.dxf",
+          "scale": 1.0
+        },
+        "children": {}
+      },
+      {
+        "jsonFixtureType": "D",
+        "jsonParameters": {},
+        "id": 123,
+        "class": "heronarts.lx.structure.JsonFixture",
+        "internal": {
+          "modulationColor": 0
+        },
+        "parameters": {
+          "label": "Custom D",
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "yaw": 0.0,
+          "pitch": 0.0,
+          "roll": 0.0,
+          "selected": true,
+          "deactivate": false,
+          "enabled": false,
+          "brightness": 1.0,
+          "identify": false,
+          "mute": false,
+          "solo": false,
+          "fixtureType": "D.dxf",
+          "scale": 1.0
+        },
+        "children": {}
+      },
+      {
+        "jsonFixtureType": "E",
+        "jsonParameters": {},
+        "id": 123,
+        "class": "heronarts.lx.structure.JsonFixture",
+        "internal": {
+          "modulationColor": 0
+        },
+        "parameters": {
+          "label": "Custom E",
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "yaw": 0.0,
+          "pitch": 0.0,
+          "roll": 0.0,
+          "selected": true,
+          "deactivate": false,
+          "enabled": false,
+          "brightness": 1.0,
+          "identify": false,
+          "mute": false,
+          "solo": false,
+          "fixtureType": "E.dxf",
+          "scale": 1.0
+        },
+        "children": {}
+      },
+      {
+        "jsonFixtureType": "F",
+        "jsonParameters": {},
+        "id": 123,
+        "class": "heronarts.lx.structure.JsonFixture",
+        "internal": {
+          "modulationColor": 0
+        },
+        "parameters": {
+          "label": "Custom F",
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "yaw": 0.0,
+          "pitch": 0.0,
+          "roll": 0.0,
+          "selected": true,
+          "deactivate": false,
+          "enabled": false,
+          "brightness": 1.0,
+          "identify": false,
+          "mute": false,
+          "solo": false,
+          "fixtureType": "F.dxf",
+          "scale": 1.0
+        },
+        "children": {}
+      },
+      {
+        "jsonFixtureType": "G",
+        "jsonParameters": {},
+        "id": 123,
+        "class": "heronarts.lx.structure.JsonFixture",
+        "internal": {
+          "modulationColor": 0
+        },
+        "parameters": {
+          "label": "Custom G",
+          "x": 0.0,
+          "y": 0.0,
+          "z": 0.0,
+          "yaw": 0.0,
+          "pitch": 0.0,
+          "roll": 0.0,
+          "selected": true,
+          "deactivate": false,
+          "enabled": false,
+          "brightness": 1.0,
+          "identify": false,
+          "mute": false,
+          "solo": false,
+          "fixtureType": "G.dxf",
+          "scale": 1.0
         },
         "children": {}
       }
@@ -270,7 +243,7 @@
     },
     "children": {
       "palette": {
-        "id": 4,
+        "id": 5,
         "class": "heronarts.lx.color.LXPalette",
         "internal": {
           "modulationColor": 0
@@ -279,23 +252,29 @@
           "label": "Color Palette",
           "transitionEnabled": false,
           "transitionTimeSecs": 5.0,
-          "transitionMode": 1
+          "transitionMode": 1,
+          "autoCycleEnabled": false,
+          "autoCycleMode": 0,
+          "autoCycleTimeSecs": 60.0,
+          "autoCycleCursor": -1,
+          "triggerSwatchCycle": false
         },
         "children": {
           "swatch": {
-            "id": 5,
+            "id": 6,
             "class": "heronarts.lx.color.LXSwatch",
             "internal": {
               "modulationColor": 0
             },
             "parameters": {
               "label": "Swatch",
-              "recall": false
+              "recall": false,
+              "autoCycleEligible": true
             },
             "children": {},
             "colors": [
               {
-                "id": 6,
+                "id": 7,
                 "class": "heronarts.lx.color.LXDynamicColor",
                 "internal": {
                   "modulationColor": 0
@@ -319,7 +298,7 @@
         "swatches": []
       },
       "tempo": {
-        "id": 8,
+        "id": 9,
         "class": "heronarts.lx.Tempo",
         "internal": {
           "modulationColor": 0
@@ -338,7 +317,7 @@
         },
         "children": {
           "nudge": {
-            "id": 9,
+            "id": 10,
             "class": "heronarts.lx.modulator.LinearEnvelope",
             "internal": {
               "modulationColor": 0
@@ -399,7 +378,7 @@
             "parameters": {
               "label": "Master",
               "arm": false,
-              "selected": false
+              "selected": true
             },
             "children": {},
             "effects": [],
@@ -408,16 +387,16 @@
         },
         "channels": [
           {
-            "id": 31,
+            "id": 49,
             "class": "heronarts.lx.mixer.LXChannel",
             "internal": {
               "modulationColor": 0,
               "controlsExpanded": true
             },
             "parameters": {
-              "label": "Pattern",
+              "label": "Channel-1",
               "arm": false,
-              "selected": true,
+              "selected": false,
               "enabled": true,
               "cue": false,
               "fader": 1.0,
@@ -431,15 +410,51 @@
               "transitionEnabled": false,
               "transitionTimeSecs": 5.0,
               "transitionBlendMode": 0,
-              "focusedPattern": 0
+              "focusedPattern": 1,
+              "triggerPatternCycle": false
             },
             "children": {},
             "effects": [],
             "clips": [],
-            "patternIndex": 0,
+            "patternIndex": 1,
             "patterns": [
               {
-                "id": 111,
+                "id": 47,
+                "class": "heronarts.lx.pattern.color.SolidPattern",
+                "internal": {
+                  "modulationColor": 0,
+                  "expanded": true,
+                  "modulationExpanded": false,
+                  "autoCycleEligible": false
+                },
+                "parameters": {
+                  "label": "Solid",
+                  "color/brightness": 100.0,
+                  "color/saturation": 100.0,
+                  "color/hue": 0.0,
+                  "colorMode": 0,
+                  "paletteIndex": 1
+                },
+                "children": {
+                  "modulation": {
+                    "id": 48,
+                    "class": "heronarts.lx.modulation.LXModulationEngine",
+                    "internal": {
+                      "modulationColor": 0
+                    },
+                    "parameters": {
+                      "label": "Modulation"
+                    },
+                    "children": {},
+                    "modulators": [],
+                    "modulations": [],
+                    "triggers": []
+                  }
+                },
+                "deviceVersion": -1
+              },
+              {
+                "id": 139,
                 "class": "heronarts.lx.pattern.color.GradientPattern",
                 "internal": {
                   "modulationColor": 0,
@@ -449,15 +464,15 @@
                 },
                 "parameters": {
                   "label": "Gradient",
-                  "xAmount": 0.7333333194255829,
-                  "yAmount": -0.36666668578982353,
-                  "zAmount": 0.0,
-                  "xOffset": 0.0,
-                  "yOffset": 0.0,
+                  "xAmount": 0.8666666597127914,
+                  "yAmount": -1.0,
+                  "zAmount": -1.0,
+                  "xOffset": 1.0,
+                  "yOffset": 1.0,
                   "zOffset": 0.0,
                   "colorMode": 1,
-                  "blendMode": 1,
-                  "gradient": 115.20000547170639,
+                  "blendMode": 0,
+                  "gradient": -0.3809523917734623,
                   "fixedColor/brightness": 100.0,
                   "fixedColor/saturation": 100.0,
                   "fixedColor/hue": 0.0,
@@ -465,11 +480,12 @@
                   "yMode": 0,
                   "zMode": 0,
                   "paletteIndex": 1,
-                  "paletteStops": 5
+                  "paletteStops": 5,
+                  "gradientRange": 360.0
                 },
                 "children": {
                   "modulation": {
-                    "id": 112,
+                    "id": 140,
                     "class": "heronarts.lx.modulation.LXModulationEngine",
                     "internal": {
                       "modulationColor": 0
@@ -478,34 +494,7 @@
                       "label": "Modulation"
                     },
                     "children": {},
-                    "modulators": [
-                      {
-                        "id": 85,
-                        "class": "heronarts.lx.modulator.VariableLFO",
-                        "internal": {
-                          "modulationColor": 0
-                        },
-                        "parameters": {
-                          "label": "Spread",
-                          "running": true,
-                          "trigger": false,
-                          "loop": true,
-                          "tempoSync": false,
-                          "tempoMultiplier": 5,
-                          "tempoLock": true,
-                          "clockMode": 0,
-                          "periodFast": 8399.616329196271,
-                          "periodSlow": 10000.0,
-                          "wave": 0,
-                          "skew": 0.0,
-                          "shape": 0.0,
-                          "phase": 0.0,
-                          "exp": 0.0
-                        },
-                        "children": {},
-                        "basis": 0.7382520511105776
-                      }
-                    ],
+                    "modulators": [],
                     "modulations": [],
                     "triggers": []
                   }
@@ -539,14 +528,41 @@
         "parameters": {
           "label": "Output",
           "enabled": true,
+          "brightness": 1.0,
           "fps": 0.0,
           "gamma": 1.0,
-          "brightness": 1.0
+          "gammaMode": 1
         },
         "children": {}
       },
-      "midi": {
+      "snapshots": {
         "id": 24,
+        "class": "heronarts.lx.snapshot.LXSnapshotEngine",
+        "internal": {
+          "modulationColor": 0
+        },
+        "parameters": {
+          "label": "Snapshots",
+          "recallMixer": true,
+          "recallModulation": true,
+          "recallPattern": true,
+          "recallEffect": true,
+          "recallOutput": true,
+          "channelMode": 0,
+          "missingChannelMode": 0,
+          "transitionEnabled": false,
+          "transitionTimeSecs": 5.0,
+          "autoCycleEnabled": false,
+          "autoCycleMode": 0,
+          "autoCycleTimeSecs": 60.0,
+          "autoCycleCursor": -1,
+          "triggerSnapshotCycle": false
+        },
+        "children": {},
+        "snapshots": []
+      },
+      "midi": {
+        "id": 25,
         "class": "heronarts.lx.midi.LXMidiEngine",
         "internal": {
           "modulationColor": 0
@@ -561,7 +577,7 @@
         "mapping": []
       },
       "audio": {
-        "id": 25,
+        "id": 26,
         "class": "heronarts.lx.audio.LXAudioEngine",
         "internal": {
           "modulationColor": 0
@@ -573,7 +589,7 @@
         },
         "children": {
           "input": {
-            "id": 26,
+            "id": 27,
             "class": "heronarts.lx.audio.LXAudioInput",
             "internal": {
               "modulationColor": 0
@@ -585,7 +601,7 @@
             "children": {}
           },
           "output": {
-            "id": 27,
+            "id": 28,
             "class": "heronarts.lx.audio.LXAudioOutput",
             "internal": {
               "modulationColor": 0
@@ -600,7 +616,7 @@
             "children": {}
           },
           "meter": {
-            "id": 28,
+            "id": 29,
             "class": "heronarts.lx.audio.GraphicMeter",
             "internal": {
               "modulationColor": 0
@@ -636,7 +652,7 @@
         }
       },
       "osc": {
-        "id": 29,
+        "id": 30,
         "class": "heronarts.lx.osc.LXOscEngine",
         "internal": {
           "modulationColor": 0
@@ -652,21 +668,15 @@
         },
         "children": {}
       },
-      "snapshots": {
-        "id": 30,
-        "class": "heronarts.lx.snapshot.LXSnapshotEngine",
-        "internal": {
-          "modulationColor": 0
-        },
-        "parameters": {
-          "label": "Snapshots",
-          "recallMixer": true,
-          "recallModulation": true,
-          "transitionEnabled": false,
-          "transitionTimeSecs": 5.0
-        },
-        "children": {},
-        "snapshots": []
+      "visibilityHelper": {
+        "C.dxf": false,
+        "LAMetro_PropExport2.obj": false,
+        "G.dxf": false,
+        "F.dxf": false,
+        "E.dxf": false,
+        "D.dxf": false,
+        "B.dxf": false,
+        "A.dxf": false
       }
     }
   },
@@ -688,22 +698,22 @@
         "centerPoint": false,
         "camera": {
           "active": false,
-          "radius": 468.5445980446526,
-          "theta": -0.07398678525229603,
-          "phi": 0.11522995324995422,
-          "x": 145.0,
-          "y": 25.0,
-          "z": 140.69287109375
+          "radius": 180.59021518927116,
+          "theta": 1.9262319803237915,
+          "phi": -1.109303217381239,
+          "x": 73.96627298742533,
+          "y": 48.57272565364838,
+          "z": -468.2585461437702
         },
         "cue": [
           {
-            "active": false,
-            "radius": 468.5445980446526,
-            "theta": -0.07398678525229603,
-            "phi": 0.11522995324995422,
-            "x": 145.0,
-            "y": 25.0,
-            "z": 140.69287109375
+            "active": true,
+            "radius": 180.59021518927116,
+            "theta": 1.9262319803237915,
+            "phi": -1.109303217381239,
+            "x": 73.96627298742533,
+            "y": 48.57272565364838,
+            "z": -468.2585461437702
           },
           {
             "active": false,
