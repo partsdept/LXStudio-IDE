@@ -52,6 +52,10 @@ public class UIDxf extends UI3dComponent {
 
     private List<DXFLine> lines = new ArrayList<DXFLine>();
     private List<DXFPolyline> polylines = new ArrayList<DXFPolyline>();
+    private List<DXFPoint> points = new ArrayList<DXFPoint>();
+
+    private List<DXFVertex> polyVerticies = new ArrayList<DXFVertex>();
+
 
     public UIDxf(File f) {
         super();
@@ -118,21 +122,74 @@ public class UIDxf extends UI3dComponent {
                 DXFVertex prevVertex = startVertex;
                 DXFVertex currentVertex = startVertex;
                 DXFVertex endVertex = startVertex;
+
+                LXPoint lxStartPoint = convertDXFCoordinatestoLXPoint(startVertex);
+
+                pg.pushMatrix();
+                pg.fill(0,255,0);
+                pg.translate(lxStartPoint.x,lxStartPoint.y,lxStartPoint.z);
+                pg.box(0.5f);
+                pg.popMatrix();
+
                 while (verticies.hasNext()) {
                     currentVertex = verticies.next();
-                    pg.line((float) prevVertex.getX(),(float) prevVertex.getZ(),(float) prevVertex.getY() * -1.0f ,(float) currentVertex.getX(),(float) currentVertex.getZ(),(float) currentVertex.getY() * -1.0f);
+                    LXPoint currentPoint = convertDXFCoordinatestoLXPoint(currentVertex);
+                //    pg.line((float) prevVertex.getX(),(float) prevVertex.getZ(),(float) prevVertex.getY() * -1.0f ,(float) currentVertex.getX(),(float) currentVertex.getZ(),(float) currentVertex.getY() * -1.0f);
                     endVertex = currentVertex;
+                    LXPoint endPoint = convertDXFCoordinatestoLXPoint(endVertex);
+                    pg.pushMatrix();
                     if (verticies.hasNext()) {
                         //LX.log("polyline next: " + currentVertex.getPoint());
                         prevVertex = currentVertex;
+                        pg.fill(255,255,0);
+                    } else {
+                        pg.fill(255,0,0);
                     }
+                    pg.translate(endPoint.x,endPoint.y,endPoint.z);
+                    pg.box(0.5f);
+                    pg.popMatrix();
                 }
-                //LX.log("polyline end: " + endVertex.getPoint());
             }
         }
     }
 
-    public void exportJSON(String filename) {
+    public void exportJsonCustomFixtures(String filename) {
+        Gson gson = new Gson();
+        JsonObject topLevelJson = new JsonObject();
+        topLevelJson.add("fixtureType",new JsonPrimitive("Custom-"+filename));
+
+        JsonArray points = new JsonArray(polyVerticies.size());
+        Iterator pp = polyVerticies.iterator();
+        while (pp.hasNext()) {
+            DXFVertex v = (DXFVertex) pp.next();
+            LXPoint lp = convertDXFCoordinatestoLXPoint(v);
+            JsonObject po = new JsonObject();
+            po.add("x",new JsonPrimitive(lp.x));
+            po.add("y",new JsonPrimitive(lp.y));
+            po.add("z",new JsonPrimitive(lp.z));
+            points.add(po);
+        }
+        topLevelJson.add("points",points);
+        Path workingDirectory = Paths.get("");
+        File modelsDirectory = new File(workingDirectory.toAbsolutePath() + File.separator + "Fixtures");
+        if (modelsDirectory == null) {
+            LX.error(" fixtures directory does not exist in project root directory");
+        } else {
+
+            File f = new File(workingDirectory.toAbsolutePath() + File.separator +  "Fixtures" + File.separator + filename);
+            try {
+                FileWriter out = new FileWriter(f);
+                out.write(gson.toJson(topLevelJson));
+                out.close();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
+    }
+
+    public void exportJsonStrips(String filename) {
         Gson gson = new Gson();
         JsonArray ja = new JsonArray(lines.size());
 
@@ -216,63 +273,96 @@ public class UIDxf extends UI3dComponent {
         java.io.InputStream in = null;
         try {
             in = new java.io.FileInputStream(f);
+            LX.log("===== FILE: " + f.getName() + " =====");
             //in = lx.ui.applet.createInput(fn);  // use this for Processing to access files in the data/ directory
         } catch (Exception e) {
-            System.out.println("Could not open DXF file." + e);
+            LX.error("Could not open DXF file." + e);
         }
 
         org.kabeja.parser.Parser parser = org.kabeja.parser.ParserBuilder.createDefaultParser();
         try {
             parser.parse(in, DXFParser.DEFAULT_ENCODING);
             DXFDocument doc = parser.getDocument();
+
+
             Iterator<DXFLayer> layers = doc.getDXFLayerIterator();
+
             //DXFLayer layer = doc.getDXFLayer("03_LED_STRANDS");   // used to just get layer "0" but now iterate across all layers
             while(layers.hasNext()) {
                 //get all polylines from the layer
                 DXFLayer layer = layers.next();   // was layer "0"
+                LX.log("layer: " + layer.getName());
+
+
+                Iterator ti = layer.getDXFEntityTypeIterator();
+                while (ti.hasNext()) {
+                    LX.log(" type: " + ti.next().toString());
+                }
+
                 java.util.List<DXFLine> ls = layer.getDXFEntities(DXFConstants.ENTITY_TYPE_LINE);
                 ListIterator<DXFLine> ll = ((ls != null) ? ls.listIterator() : null);
                 java.util.List<DXFPolyline> pls = layer.getDXFEntities(DXFConstants.ENTITY_TYPE_POLYLINE);
                 ListIterator<DXFPolyline> pll = ((pls != null) ? pls.listIterator() : null);
 
-                LX.log("layer: " + layer.getName());
-                LX.log("line count: " + ((ls != null) ? ls.size() : "null"));
-                LX.log("polyline count: " + ((pls != null) ? pls.size() : "null"));
 
-                if (ll != null) {
-                    DXFLine tempLine;
-                    org.kabeja.dxf.helpers.Point startPoint;
-                    org.kabeja.dxf.helpers.Point endPoint;
-                    while (ll.hasNext()) {
-                        tempLine = (DXFLine) ll.next();
-                        lines.add(tempLine);
-                        // do something with start and end points of line...
-                        startPoint = tempLine.getStartPoint();
-                        endPoint = tempLine.getEndPoint();
-                        LX.log("line start: " + startPoint);
-                        LX.log("line end: " + endPoint);
-                        LXVector slxv = new LXVector((float) startPoint.getX(),(float) startPoint.getY(),(float) startPoint.getZ());
-                        LXVector elxv = new LXVector((float) endPoint.getX(),(float) endPoint.getY(),(float) endPoint.getZ());
-                    }
-                }
+//
+//                    java.util.List<DXFPoint> pps = layer.getDXFEntities(DXFConstants.ENTITY_TYPE_POINT);
+//                    ListIterator<DXFPoint> ppl = ((pps != null) ? pps.listIterator() : null);
+//                    LX.log("point count: " + ((pps != null) ? pps.size() : "null"));
+//                LX.log("line count: " + ((ls != null) ? ls.size() : "null"));
+//                LX.log("polyline count: " + ((pls != null) ? pls.size() : "null"));
+//
+//                    if (ppl != null) {
+//                        DXFPoint tp;
+//                        while (ppl.hasNext()) {
+//                            tp = (DXFPoint) ppl.next();
+//                            LX.log("  point: " + tp.getX() + "," + tp.getY() + "," + tp.getZ());
+//                            points.add(tp);
+//                        }
+//                    }
+
+
+//
+//
+//                if (ll != null) {
+//                    DXFLine tempLine;
+//                    org.kabeja.dxf.helpers.Point startPoint;
+//                    org.kabeja.dxf.helpers.Point endPoint;
+//                    while (ll.hasNext()) {
+//                        tempLine = (DXFLine) ll.next();
+//                        lines.add(tempLine);
+//                        // do something with start and end points of line...
+//                        startPoint = tempLine.getStartPoint();
+//                        endPoint = tempLine.getEndPoint();
+//                        LX.log("line start: " + startPoint + "line end: " + endPoint);
+//                        LXVector slxv = new LXVector((float) startPoint.getX(),(float) startPoint.getY(),(float) startPoint.getZ());
+//                        LXVector elxv = new LXVector((float) endPoint.getX(),(float) endPoint.getY(),(float) endPoint.getZ());
+//                    }
+//                }
 
                 // TODO: CREATE A CUSTOM FIXTURE WITH AN ARRAY OF STRIPS FOR EACH SEGMENT OF A POLYLINE
                 if (pll != null) {
-                    DXFPolyline tempPolyline = pll.next();
-                    polylines.add(tempPolyline);
-                    // do something with each point of polyline...
-                    Iterator<DXFVertex> verticies = tempPolyline.getVertexIterator();
-                    DXFVertex startVertex = verticies.next();
-                    LX.log("polyline start: " + startVertex.getPoint());
-                    DXFVertex endVertex = startVertex;
-                    while (verticies.hasNext()) {
-                        DXFVertex nextVertex = verticies.next();
-                        endVertex = nextVertex;
-                        if (verticies.hasNext()) {
-                            LX.log("polyline next: " + nextVertex.getPoint());
+                    while(pll.hasNext()) {
+                        DXFPolyline tempPolyline = pll.next();
+                        polylines.add(tempPolyline);
+                        // do something with each point of polyline...
+                        Iterator<DXFVertex> verticies = tempPolyline.getVertexIterator();
+                        DXFVertex startVertex = verticies.next();
+                        polyVerticies.add(startVertex);
+
+                        LX.log("polyline start: " + startVertex.getPoint() + " end: " + tempPolyline.getVertex(tempPolyline.getVertexCount() - 1).getPoint() +  " count: " + tempPolyline.getVertexCount());
+                        DXFVertex endVertex = startVertex;
+                        while (verticies.hasNext()) {
+                            DXFVertex nextVertex = verticies.next();
+                            polyVerticies.add(nextVertex);
+
+                            endVertex = nextVertex;
+                            if (verticies.hasNext()) {
+//                                LX.log("polyline next: " + nextVertex.getPoint());
+                            }
                         }
+ //                       LX.log("polyline end: " + endVertex.getPoint());
                     }
-                    LX.log("polyline end: " + endVertex.getPoint());
                 }
             }
         } catch (org.kabeja.parser.ParseException e) {

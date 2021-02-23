@@ -14,7 +14,7 @@ public class UIProp extends UIPShape {
     private File file;
 
     public UIProp(P3LX lx, File f) {
-        super(lx,f.getName());
+        super(lx,f.getAbsolutePath());
         file = f;
 
     }
