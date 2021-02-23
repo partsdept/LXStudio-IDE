@@ -27,6 +27,7 @@ import java.util.List;
 import com.sun.media.jfxmedia.events.VideoRendererListener;
 import heronarts.lx.LX;
 import heronarts.lx.LXPlugin;
+import heronarts.lx.model.LXModel;
 import heronarts.lx.model.LXPoint;
 import heronarts.lx.structure.LXFixture;
 import heronarts.lx.studio.LXStudio;
@@ -74,6 +75,10 @@ public class LAMetroLX extends PApplet implements LXPlugin {
         flags.resizable = true;
         flags.useGLPointCloud = false;
         flags.startMultiThreaded = true;
+
+        //LXModel model = new LXModel();
+        //new LXStudio(this, flags,model);
+
         new LXStudio(this, flags);
         this.surface.setTitle(WINDOW_TITLE);
     }
@@ -92,8 +97,11 @@ public class LAMetroLX extends PApplet implements LXPlugin {
 //      boolean headless = false;  //TODO: REPLACE THIS WITH THE REAL CHECK FOR HEADLESS OR NOT
 //      if (!headless) {
           Path workingDirectory = Paths.get("");
-          File dataDirectory = new File(workingDirectory.toAbsolutePath() + "/data");
-          if (dataDirectory == null) {  //TODO: THIS DOES NOT WORK AS EXPECTED WHEN data/ DOES NOT EXIST
+          LX.log("Working Directory is: " + workingDirectory);
+          LX.log("user.dir is: " + System.getProperty("user.dir"));
+
+          File dataDirectory = new File(System.getProperty("user.dir") + File.separator + "data");
+          if (dataDirectory == null) {  //TODO: THIS DOES NOT WORK AS EXPECTED WHEN data DOES NOT EXIST
               LX.error(" directory does not exist in root director");
               objFiles = new ArrayList<>();  // create empty lists to avoid null pointer later
               dxfFiles = new ArrayList<>();
@@ -140,7 +148,7 @@ public class LAMetroLX extends PApplet implements LXPlugin {
             List<File> files = new ArrayList<File>();
             for (int i = 0 ; i < names.length ; i++) {
                 if (names[i].endsWith(suffix.toLowerCase()) || names[i].endsWith(suffix.toUpperCase())) {
-                    files.add(new File((file.getAbsolutePath() + "/" + names[i])));
+                    files.add(new File((file.getAbsolutePath() + File.separator + names[i])));
                 }
             }
             return files;
